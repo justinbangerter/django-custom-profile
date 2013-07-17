@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Change Your Password{% endblock %}
+
+{% block content %}
+    <div class="row-fluid" xmlns="http://www.w3.org/1999/html">
+        {% include 'snippets/profile-sidenav.html' %}
+        <div id="content_container" class="content_container_web span9 well">
+            <div id="content" class="content_web">
+                {% if request.user.is_authenticated %}
+                    <h2>Password Change</h2>
+                    <p>Please enter your old password, for security's sake, and then enter your new password twice so we can verify you typed it in correctly.</p>
+                    <form method="POST" action="{% url accounts:pw_change  %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input class="btn btn-primary" type="submit" value="Change Password">
+                    </form>
+                {% else %}
+                    <h2>You are not logged in to view your profile!</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

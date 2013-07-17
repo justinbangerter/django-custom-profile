@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Password was Changed{% endblock %}
+
+{% block content %}
+    <div class="row-fluid" xmlns="http://www.w3.org/1999/html">
+        {% include 'snippets/profile-sidenav.html' %}
+        <div id="content_container" class="content_container_web span9 well">
+            <div id="content" class="content_web">
+                {% if request.user.is_authenticated %}
+                    <h3>Your password has been changed</h3>
+                    <a href="{% url accounts:profile %}" class="btn">Go back to your profile</a>
+                {% else %}
+                    <h2>You are not logged in!</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
