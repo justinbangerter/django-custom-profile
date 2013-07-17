@@ -7,9 +7,10 @@ I got tired of digging through projects and moving this code around, so here it 
 
 ---
 
-First, clone this repository into a subfolder of your repository 
-and add the following line to your `settings.py` (just copy the folder, don't bother
-making a submodule)
+First, clone this repository into a subfolder of your repository
+(just copy the folder, don't bother making a submodule).
+
+Then, add the following line to your `settings.py`
 
     AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
