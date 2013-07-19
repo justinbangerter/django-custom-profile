@@ -3,22 +3,19 @@
 {% block title %}Your Profile{% endblock %}
 
 {% block content %}
-    <div class="row-fluid">
-        {% include 'snippets/profile-sidenav.html' %}
-        <div id="content_container" class="content_container_web span9 well">
-            <div id="content" class="content_web">
-                {% if request.user.is_authenticated %}
-                    <form method="POST" action="{% url accounts:profile  %}">
-                        {% csrf_token %}
-                        {{ user_form.as_p }}
-                        {{ profile_form.as_p }}
-                        <p><a href="{% url accounts:pw_change %}">Change your Password</a></p>
-                        <input class="btn btn-primary" type="submit" value="Save Changes">
-                    </form>
-                {% else %}
-                    <h2>You are not logged in to view your profile!</h2>
-                {% endif %}
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'accounts:profile' %}">
+          {% csrf_token %}
+          {{ user_form.as_p }}
+          {{ profile_form.as_p }}
+          <p><a href="{% url 'accounts:pw_change' %}">Change your Password</a></p>
+          <input class="btn btn-primary" type="submit" value="Save Changes"/>
+        </form>
+      {% else %}
+        <h2>You are not logged in!</h2>
+      {% endif %}
     </div>
+  </div>
 {% endblock %}
